@@ -15,3 +15,5 @@ val colorEnd = Color(0xFF2948ff)
 
 val colorCancelStart = Color(0xFFFF416C)
 val colorCancelEnd = Color(0xFFFF4B2B)
+
+val lightThemeSplashColor = Color(0xFF3b8d99)

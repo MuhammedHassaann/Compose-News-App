@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,8 +24,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.muhammedhassaan.yaganews.R
+import com.muhammedhassaan.yaganews.ui.theme.lightThemeSplashColor
 import kotlinx.coroutines.delay
 
 @Composable
@@ -59,14 +63,14 @@ fun Splash(
 ){
     Box(
         modifier = Modifier
-            .background(if (isSystemInDarkTheme()) Color.Black else Color.Magenta)
+            .background(if (isSystemInDarkTheme()) Color.Black else lightThemeSplashColor)
             .fillMaxSize()
             .alpha(alpha)
             .scale(scale),
         contentAlignment = Alignment.Center
     ){
         Icon(
-            imageVector = Icons.Default.DateRange,
+            painter = painterResource(id = R.drawable.news),
             contentDescription = "Logo Icon",
             tint = Color.White,
             modifier = Modifier.size(150.dp),

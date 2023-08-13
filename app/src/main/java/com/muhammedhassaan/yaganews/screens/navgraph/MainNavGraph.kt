@@ -1,13 +1,12 @@
 package com.muhammedhassaan.yaganews.screens.navgraph
 
-import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.muhammedhassaan.yaganews.screens.AnimatedSplashScreen
-import com.muhammedhassaan.yaganews.screens.HomeScreen
+import com.muhammedhassaan.yaganews.screens.home.HomeScreen
 import com.muhammedhassaan.yaganews.utils.Screens
 
 @Composable

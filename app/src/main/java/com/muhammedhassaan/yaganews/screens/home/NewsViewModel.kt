@@ -1,4 +1,4 @@
-package com.muhammedhassaan.yaganews
+package com.muhammedhassaan.yaganews.screens.home
 
 import android.app.Application
 import android.util.Log
