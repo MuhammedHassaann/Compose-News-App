@@ -13,6 +13,7 @@ import com.muhammedhassaan.domain.model.Article
 import com.muhammedhassaan.domain.usecase.GetNewsFromRemoteUseCase
 import com.muhammedhassaan.yaganews.utils.Internet
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -32,7 +33,7 @@ class NewsViewModel @Inject constructor(
         job?.cancel()
         isLoading = true
         Log.i("TAG", "getNews: ")
-        job = viewModelScope.launch {
+        job = viewModelScope.launch(Dispatchers.IO){
             val response = getNewsFromRemoteUseCase.invoke()
             if (response.status == "ok"){
                 news.value = response.articles
