@@ -4,13 +4,12 @@ import android.app.Application
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.*
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.muhammedhassaan.domain.model.Article
-import com.muhammedhassaan.domain.usecase.GetNewsFromRemoteUseCase
+import com.muhammedhassaan.domain.usecase.GetAllNewsFromLocalUseCase
+import com.muhammedhassaan.domain.usecase.SaveNewsUseCase
 import com.muhammedhassaan.yaganews.utils.Internet
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewsViewModel @Inject constructor(
-    private val getNewsFromRemoteUseCase: GetNewsFromRemoteUseCase,
+    private val saveNewsUseCase: SaveNewsUseCase,
+    private val getAllNewsFromLocalUseCase: GetAllNewsFromLocalUseCase,
     private val application: Application
 ): ViewModel() {
 
@@ -34,10 +34,8 @@ class NewsViewModel @Inject constructor(
         isLoading = true
         Log.i("TAG", "getNews: ")
         job = viewModelScope.launch(Dispatchers.IO){
-            val response = getNewsFromRemoteUseCase.invoke()
-            if (response.status == "ok"){
-                news.value = response.articles
-            }
+            saveNewsUseCase.invoke()
+            news.value = getAllNewsFromLocalUseCase.invoke()
             isLoading = false
         }
     }

@@ -1,7 +1,9 @@
 package com.muhammedhassaan.yaganews.di
 
-import com.muhammedhassaan.domain.repo.remote.RemoteRepository
-import com.muhammedhassaan.domain.usecase.GetNewsFromRemoteUseCase
+import com.muhammedhassaan.domain.repo.MainRepository
+import com.muhammedhassaan.domain.repo.local.LocalRepository
+import com.muhammedhassaan.domain.usecase.GetAllNewsFromLocalUseCase
+import com.muhammedhassaan.domain.usecase.SaveNewsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +15,13 @@ import dagger.hilt.components.SingletonComponent
 object UseCaseModule {
 
     @Provides
-    fun provideGetAllNewsUseCase(remoteRepository: RemoteRepository): GetNewsFromRemoteUseCase {
-        return GetNewsFromRemoteUseCase(remoteRepository)
+    fun provideSaveNewsUseCase(mainRepository: MainRepository): SaveNewsUseCase {
+        return SaveNewsUseCase(mainRepository)
     }
+
+    @Provides
+    fun provideGetAllNewsFromLocalUseCase(mainRepository: MainRepository): GetAllNewsFromLocalUseCase {
+        return GetAllNewsFromLocalUseCase(mainRepository)
+    }
+
 }
