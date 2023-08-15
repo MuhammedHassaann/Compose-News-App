@@ -165,7 +165,7 @@ fun NewsListItem(
                 .padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            CoilImage(article.urlToImage)
+            article.urlToImage?.let { CoilImage(it) }
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = article.title,
@@ -175,12 +175,14 @@ fun NewsListItem(
             )
             Spacer(modifier = Modifier.height(8.dp))
             if (expanded){
-                Text(
-                    text = article.content,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Light,
-                    fontStyle = FontStyle.Italic,
-                )
+                article.content?.let {
+                    Text(
+                        text = it,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Light,
+                        fontStyle = FontStyle.Italic,
+                    )
+                }
             }
             IconButton(onClick = { expanded = !expanded }) {
                 Icon(
