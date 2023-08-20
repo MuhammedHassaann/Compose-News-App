@@ -1,7 +1,6 @@
 package com.muhammedhassaan.data.remote
 
-import com.muhammedhassaan.data.BuildConfig
-import com.muhammedhassaan.domain.model.NewsResponse
+import com.muhammedhassaan.data.remote.dto.NewsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

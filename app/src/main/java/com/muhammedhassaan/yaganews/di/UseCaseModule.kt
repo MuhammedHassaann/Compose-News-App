@@ -1,9 +1,11 @@
 package com.muhammedhassaan.yaganews.di
 
-import com.muhammedhassaan.domain.repo.MainRepository
-import com.muhammedhassaan.domain.repo.local.LocalRepository
-import com.muhammedhassaan.domain.usecase.GetAllNewsFromLocalUseCase
-import com.muhammedhassaan.domain.usecase.SaveNewsUseCase
+import com.muhammedhassaan.domain.repo.Repository
+import com.muhammedhassaan.domain.usecase.GetArchivedArticlesUseCase
+import com.muhammedhassaan.domain.usecase.GetArticleDetailsByIdUseCase
+import com.muhammedhassaan.domain.usecase.GetCachedNewsUseCase
+import com.muhammedhassaan.domain.usecase.RefreshNewsUseCase
+import com.muhammedhassaan.domain.usecase.UpdateArticleArchivedStatusUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,13 +17,27 @@ import dagger.hilt.components.SingletonComponent
 object UseCaseModule {
 
     @Provides
-    fun provideSaveNewsUseCase(mainRepository: MainRepository): SaveNewsUseCase {
-        return SaveNewsUseCase(mainRepository)
+    fun provideGetArchivedArticlesUseCase(repository: Repository): GetArchivedArticlesUseCase{
+        return GetArchivedArticlesUseCase(repository)
     }
 
     @Provides
-    fun provideGetAllNewsFromLocalUseCase(mainRepository: MainRepository): GetAllNewsFromLocalUseCase {
-        return GetAllNewsFromLocalUseCase(mainRepository)
+    fun provideGetArticleDetailsByIdUseCase(repository: Repository): GetArticleDetailsByIdUseCase{
+        return GetArticleDetailsByIdUseCase(repository)
     }
 
+    @Provides
+    fun provideGetCachedNewsUseCase(repository: Repository): GetCachedNewsUseCase{
+        return GetCachedNewsUseCase(repository)
+    }
+
+    @Provides
+    fun provideRefreshNewsUseCase(repository: Repository): RefreshNewsUseCase{
+        return RefreshNewsUseCase(repository)
+    }
+
+    @Provides
+    fun provideUpdateArticleArchivedStatusUseCase(repository: Repository): UpdateArticleArchivedStatusUseCase{
+        return UpdateArticleArchivedStatusUseCase(repository)
+    }
 }
