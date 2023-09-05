@@ -13,6 +13,6 @@ buildscript{
     }
     dependencies {
         // Other dependencies
-        classpath("com.squareup.moshi:moshi:1.15.0")
+        classpath(libs.moshi)
     }
 }
